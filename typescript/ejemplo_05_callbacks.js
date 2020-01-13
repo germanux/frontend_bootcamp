@@ -18,6 +18,5 @@ function operarCallBack(x, y, funcionCallBack) {  // Función callback o de retr
     console.log("O modificando el DOM");
     return funcionCallBack(x, y);
 }
-
 console.log("Operacion con CllBk = " + operarCallBack(15, 3, divide));    
 
