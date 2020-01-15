@@ -1,0 +1,19 @@
+<h2>Lista de usuarios</h2>
+<!-- Directivas estructurales (*ngDirectiva):    *ngIf y *ngFor (parecido al foreach) -->
+<h3  *ngIf="laListaDeUsuarios.length == 0">
+    La lista de usuarios está vacía
+</h3>
+
+<div  *ngIf="laListaDeUsuarios.length != 0">
+    Cantidad de usuarios: {{ laListaDeUsuarios.length }}
+    <br/>
+    <table>
+        <thead><th>Nombre</th><th>E-mail</th><th>Password</th></thead>
+        <tr *ngFor="let usu of laListaDeUsuarios">
+            <td>{{ usu.nombre}}</td>
+            <td>{{ usu.email}}</td>
+            <td>{{ usu.password}}</td>
+        </tr>
+    </table>
+
+</div>
