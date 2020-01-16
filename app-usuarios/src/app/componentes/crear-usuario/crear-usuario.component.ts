@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Usuario } from './usuario';
-import { AlmacenUsuariosService } from './almacen-usuarios.service';
+import { Usuario } from '../../entidades/usuario';
+import { AlmacenUsuariosService } from '../../servicios/almacen-usuarios.service';
 
 @Component({
     selector: 'app-crear-usuario',
