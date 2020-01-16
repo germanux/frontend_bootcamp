@@ -23,5 +23,12 @@ export class ListaUsuariosComponent implements OnInit {
     // Le pedimos la información de los usuarios al servicio
     this.laListaDeUsuarios = this.srvUsu.getListaUsuarios();
   }
-
+  lanzarEdicion() {
+    alert("Edit");
+  }
+  
+  lanzarEliminar() {
+    alert("lanzarEliminar");
+  }
+  
 }

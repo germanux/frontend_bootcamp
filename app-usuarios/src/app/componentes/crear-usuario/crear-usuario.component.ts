@@ -5,7 +5,7 @@ import { AlmacenUsuariosService } from '../../servicios/almacen-usuarios.service
 @Component({
     selector: 'app-crear-usuario',
     templateUrl: './crear-usuario.component.html',
-    styleUrls: []
+    styleUrls: ['./crear-usuario.component.css']
 })
 export class CrearUsuarioComponent {
     titulo: string = "Registro de usuario";

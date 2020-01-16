@@ -7,13 +7,25 @@
 <div  *ngIf="laListaDeUsuarios.length != 0">
     Cantidad de usuarios: {{ laListaDeUsuarios.length }}
     <br/>
+    {{ "Variable posUsuElim = " + posUsuElim }}
     <table>
-        <thead><th>Nombre</th><th>E-mail</th><th>Password</th></thead>
-        <tr *ngFor="let usu of laListaDeUsuarios">
+        <thead><th>Nombre</th><th>E-mail</th><th>Password</th><th>Acciones</th></thead>
+        <tr *ngFor="let usu of laListaDeUsuarios; let i = index">
+            <!-- Ahora este ngFor que parecía un foreach, 
+                ahora es un for(let i = 0; i<array.length; i++) -->
             <td>{{ usu.nombre}}</td>
             <td>{{ usu.email}}</td>
             <td>{{ usu.password}}</td>
+            <td><input type="button" value="/" (click)="lanzarEdicion()">
+                <!-- Cuando el usuario pulsa [X], guardamos la posición
+                     de ese usuario (el index del usuario en el array) ... -->
+                <input type="button" value="X" (click)="posUsuElim = i">
+                <!-- Para que, en cada uno de los usuarios, pregunte si es el que
+                    se pretende eliminar -->
+                <div *ngIf="posUsuElim == i">¿Estás seguro? 
+                    <button (click)="posUsuElim = -1; lanzarEliminar()">Sí</button>
+                    <button (click)="posUsuElim = -1">No</button></div>
+            </td>
         </tr>
     </table>
-
 </div>

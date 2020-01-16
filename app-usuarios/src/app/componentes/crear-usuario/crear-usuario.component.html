@@ -1,23 +1,12 @@
-<app-editar-usuario></app-editar-usuario>
-
 <div>
     <h2>{{ titulo }}</h2>
-    <label>Nombre: </label>
-    <input id="nombre" placeholder="Nombre"
-        [(ngModel)]="usuarioNuevo.nombre" />
-    <br>
+    <!--               [variableDelHijo] = "variableDelPadre"    -->
+    <app-editar-usuario [usuarioEditado] = "usuarioNuevo"></app-editar-usuario>
 
-    <label>Email: </label>
-    <input type="email" placeholder="Email" 
-        [(ngModel)]="usuarioNuevo.email" />
-    <br>
-
-    <label>Password: </label>
-    <input placeholder="Password" type="password"
-       [(ngModel)]="usuarioNuevo.password"/><br>
     <input  type="button" value="Registrar" 
             (click)="registrarAlPulsarClick()" />
+    <br/>
+    <span>Datos rellenados:</span>
+    <p>{{ usuarioNuevo.nombre + " - " + usuarioNuevo.email }}</p>
 </div>
-<span>Datos rellenados:</span>
-<p>{{ usuarioNuevo.nombre + " - " + usuarioNuevo.email }}</p>
 

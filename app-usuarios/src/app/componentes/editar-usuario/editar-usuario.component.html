@@ -1,1 +1,12 @@
-<p>editar-usuario works!</p>
+<div>
+    <label>Nombre: </label>
+    <input id="nombre" placeholder="Nombre" [(ngModel)]="usuarioEditado.nombre" />
+    <br>
+
+    <label>Email: </label>
+    <input type="email" placeholder="Email" [(ngModel)]="usuarioEditado.email" />
+    <br>
+
+    <label>Password: </label>
+    <input placeholder="Password" type="password" [(ngModel)]="usuarioEditado.password" /><br>
+</div>
