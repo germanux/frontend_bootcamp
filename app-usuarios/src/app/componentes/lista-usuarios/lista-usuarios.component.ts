@@ -26,9 +26,11 @@ export class ListaUsuariosComponent implements OnInit {
   lanzarEdicion() {
     alert("Edit");
   }
-  
-  lanzarEliminar() {
-    alert("lanzarEliminar");
+  lanzarEliminar(posUsuElim: number, usu: Usuario) {
+    if (this.srvUsu.eliminarUsuario(posUsuElim)) {
+      alert(usu.nombre + " ha sido eliminado");
+    } else {
+      alert(usu.nombre + " NO ha sido eliminado");
+    }
   }
-  
 }

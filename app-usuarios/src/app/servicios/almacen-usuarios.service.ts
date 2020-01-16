@@ -48,4 +48,10 @@ export class AlmacenUsuariosService {
   getListaUsuarios() {
     return this.listaUsuarios;
   }
+  // Este método se puede usar en cualquier parte
+  eliminarUsuario(posicionUsu: number) {    
+    this.listaUsuarios.splice(posicionUsu, 1);
+    this.guardarListaLocalStrg();
+    return true;
+  }
 }
