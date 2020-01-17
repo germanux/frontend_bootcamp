@@ -1,12 +1,16 @@
 <div>
-    <label>Nombre: </label>
+    <label [ngClass]="getClaseCSS()">Nombre: </label>
+    <!-- Double data-binding: Enlazar un campo (p.ej. INPUT) a una 
+          variable miembro de la clase. Si modificas la variable se modifica 
+        el INPUT, y viceversa, si modifica el usuario la caja de texto, 
+        se altera variable. Enlace bidireccional -->
     <input id="nombre" placeholder="Nombre" [(ngModel)]="usuarioEditado.nombre" />
     <br>
 
-    <label>Email: </label>
+    <label [ngClass]="getClaseCSS()">Email: </label>
     <input type="email" placeholder="Email" [(ngModel)]="usuarioEditado.email" />
     <br>
 
-    <label>Password: </label>
+    <label [ngClass]="getClaseCSS()">Password: </label>
     <input placeholder="Password" type="password" [(ngModel)]="usuarioEditado.password" /><br>
 </div>

@@ -8,6 +8,11 @@ import { Usuario } from 'src/app/entidades/usuario';
 })
 export class EditarUsuarioComponent {
 
+  @Input() editando: boolean;
   // Ese usuario, debe venir del componente padre
   @Input() usuarioEditado: Usuario;
+
+  public getClaseCSS() {
+    return "ancho-label otra-clase";
+  }
 }
