@@ -9,6 +9,17 @@
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <!-- Babel convierte en JS antiguo, por compatibilidad con tooooodos los navegadores. (ES-5)   -->
     <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <style>
+        #contenedor {
+            padding: 50px;
+            background-color: #EEE;
+        }
+        #contenedor  h1 {
+            font-size: 60px;
+            font-family: sans-serif;
+            color: #0080A8;
+        }
+    </style>
 </head>
 <body>
     <div id="contenedor">
@@ -17,7 +28,9 @@
 
     <script type="text/babel">
     let divCont = document.getElementById("contenedor");
-    ReactDOM.render(<h1>Soy Spiderman</h1>, divCont);
+    ReactDOM.render(
+        React.createElement("h1", null, "Soy Batman"), 
+        divCont);
     </script>
 
 </body>

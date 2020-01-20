@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejemplo básico React</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <!-- Babel convierte en JS antiguo, por compatibilidad con tooooodos los navegadores. (ES-5)   -->
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <style>
+        #contenedor {
+            padding: 50px;
+            background-color: #EEE;
+        }
+        #contenedor  h1 {
+            font-size: 60px;
+            font-family: sans-serif;
+            color: #0080A8;
+        }
+    </style>
+</head>
+<body>
+    <div id="contenedor">
+    </div>
+
+    <script type="text/babel">
+        // Un componente, como en Angular, es una clase;
+        // pero NO se decora (@), 
+        // si no que se hereda de React.Component   
+        class PrimerComponente extends React.Component {
+
+            // Implementar el método render devolviendo la plantilla
+            render() {
+                return <p>Mi nombre es Iñigo de Montoya</p>;
+            }
+        }
+        // Para usarlo se emplea el nombre de la clase como etiqueta
+        ReactDOM.render(    
+            // El objeto XML sólo puede tener un nodo padre/raiz
+            // Los componentes pueden auto-cerrarse <Comp/>
+            <div>
+                <PrimerComponente/>
+                <PrimerComponente/>
+                <PrimerComponente/>
+            </div>,  
+            document.querySelector("#contenedor"));
+    </script>
+</body>
+</html>
