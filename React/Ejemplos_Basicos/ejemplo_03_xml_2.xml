@@ -1,0 +1,17 @@
+<!-- Forma 1 de guardar usuarios -->
+<ListaUsuarios cantidad="2" tipo="Monos">    <!-- Nodo Raiz: ListaUsuario -->
+    <GrupoUsuarios tipo="normales">
+        <Usuario num="1" nombre="Fulano" email="fff@ffff.com" edad="30" telefono="">
+            <!-- Los campos ahora como atributos. Por cierto,
+                este comentario también es un nodo hoja -->
+        </Usuario>
+        <Usuario num="2" nombre="Mengano" email="mmmm@mmmmm.ss" edad="40" telefono="45454545">
+        </Usuario>
+    </GrupoUsuarios>
+    <GrupoUsuarios tipo="anormales de Ximemna">
+        <Usuario num="1" nombre="Otro pavo" email="fff@ffff.com" edad="30" telefono="">
+        </Usuario>
+        <Usuario num="2" nombre="Una pava" email="mmmm@mmmmm.ss" edad="40" telefono="45454545">
+        </Usuario>
+    </GrupoUsuarios>
+</ListaUsuarios>

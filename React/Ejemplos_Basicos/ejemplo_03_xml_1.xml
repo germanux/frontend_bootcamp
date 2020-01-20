@@ -1,0 +1,23 @@
+<!-- Forma 1 de guardar usuarios -->
+<ListaUsuario><!-- Nodo Raiz (Bisabuelo): ListaUsuario -->
+    <Usuario><!-- Nodo Rama (Abuelo): Usuario -->
+        <Nombre>Fulano</Nombre> 
+            <!-- Nodo padre: Nombre-->
+            <!-- Nodo hoja (hijo sin hijos):
+                 tipo texto: "Fulano" -->
+        <Email>fff@ffff.com</Email>
+        <Edad>30</Edad>
+        <Telefono/>
+            <!-- Nodo hoja tipo etiqueta (autocierre): "Telefono" -->
+    </Usuario>
+    <Usuario>
+        <Nombre>Otro</Nombre>
+        <Email></Email>
+        <Edad>27</Edad>
+    </Usuario>
+    <Usuario>
+        <Nombre>...</Nombre>
+        <Email></Email>
+        <Edad></Edad>
+    </Usuario>
+</ListaUsuario>
