@@ -1,0 +1,11 @@
+div {
+    border: lightblue 2px solid;
+    width: 80%;
+    margin-left: 10%;
+}
+.ancho-label-registro {
+    font-size: 1.1em;
+}
+.ancho-label-modificacion {
+    font-size: 1.2em;
+}
