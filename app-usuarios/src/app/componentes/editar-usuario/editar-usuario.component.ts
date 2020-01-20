@@ -13,6 +13,6 @@ export class EditarUsuarioComponent {
   @Input() usuarioEditado: Usuario;
 
   public getClaseCSS() {
-    return "ancho-label otra-clase";
+    return "ancho-label";
   }
 }
