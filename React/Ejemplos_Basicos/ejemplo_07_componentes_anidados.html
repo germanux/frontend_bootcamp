@@ -51,6 +51,7 @@
             }
         } 
         class SegundoComponente extends React.Component {
+
             // Todo componente, que accedemos en el JS como this
             // tiene una variable miembro, this.props, que
             // recibe los valores pasados en los atributos
@@ -60,13 +61,15 @@
             render() {
                 return <p>Tú mataste a mi padre <br/>
                     { this.props.nombre 
-                        + " duplicamos" + this.props.nombre} <br/></p>;
+                        + " duplicamos" + this.props.nombre} <br/>
+                        <TercerComponente></TercerComponente></p>;
                     // Las llaves { } nos permite insertar JS en el JSX
             }
         }
         class TercerComponente extends React.Component {
             render() {
                 return <div><p>¡Preparate a morir!</p>
+          
                         </div>;
             }
         }
