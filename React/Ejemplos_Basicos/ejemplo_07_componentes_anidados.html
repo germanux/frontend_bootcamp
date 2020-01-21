@@ -44,9 +44,10 @@
                 // los atributos. Como en Angular usabamos 
                 // [nombre]="codigo.TypeScript()"
                 return <div><p>Mi nombre es Iñigo de Montoya</p>
-                    <SegundoComponente nombre=" Hijo de P. "/>
+                    <SegundoComponente nombre=" Hijo de P. " 
+                                        apellidos="Y de su Madre"/>
                     { /* Comentario en JSX*/ }
-                    <SegundoComponente nombre={ calculo }/>
+                    <SegundoComponente nombre={ ""+calculo } apellidos="Hijo de un calculo"/>
                     </div>;
             }
         } 
@@ -59,16 +60,21 @@
             // Es como en Angular, en el componente declarábamos
             // sobre la clase variables miembro con @Input
             render() {
-                return <p>Tú mataste a mi padre <br/>
-                    { this.props.nombre 
-                        + " duplicamos" + this.props.nombre} <br/>
-                        <TercerComponente></TercerComponente></p>;
+                 return (
+                    <div>
+                        <p>Tú mataste a mi padre</p>
+                        <p>{ this.props.nombre 
+                        + ", " + this.props.apellidos}</p>
+                        <TercerComponente 
+                            nombreCompleto={ this.props.nombre.toUpperCase()
+                        + " + " + this.props.apellidos.toUpperCase() }></TercerComponente></div> 
+                    );
                     // Las llaves { } nos permite insertar JS en el JSX
             }
         }
         class TercerComponente extends React.Component {
             render() {
-                return <div><p>¡Preparate a morir!</p>
+                return <div><p>¡Preparate a morir {this.props.nombreCompleto }!</p>
           
                         </div>;
             }

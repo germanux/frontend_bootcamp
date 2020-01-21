@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejemplo básico React</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <!-- Babel convierte en JS antiguo, por compatibilidad con tooooodos los navegadores. (ES-5)   -->
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+    3 * 4 + 3
+    3 * (4 + 3)
+    3 * (4 + (3) )
+    
+    <div id="divContenedor">
+        
+    </div>
+    <script type="text/babel">
+        class PrimerComponente extends React.Component {
+            render() {
+                // Vamos a definir atributos nombre y mensaje
+                // <p>Mi nombre es __'nombre'__ ... __'mensaje'__</p>
+                return (
+                    <p>Mi nombre es {this.props.nombre} ... {this.props.mensaje}</p>
+                );  // Devolvemos objeto virtual DOM con formato JSX
+            }
+        }
+        ReactDOM.render(
+            <div>
+                <h1>Usando props de React: Atributos XML</h1>
+                <PrimerComponente nombre="Iñigo Montoya"
+                                  mensaje="¡Prepárate para morir!">
+                                  </PrimerComponente>
+                <PrimerComponente nombre="Germán Caballero"
+                                  mensaje="¡Prepárate para sufrir!">
+                                  </PrimerComponente>
+            </div>, 
+            document.getElementById("divContenedor"));
+    </script>
+</body>
+</html>
