@@ -9,6 +9,11 @@
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <!-- Babel convierte en JS antiguo, por compatibilidad con tooooodos los navegadores. (ES-5)   -->
     <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+<style>
+    .fondo-azul {
+        background-color: lightblue;
+    }
+</style>
 </head>
 <body>
     3 * 4 + 3
@@ -19,27 +24,59 @@
         
     </div>
     <script type="text/babel">
-        class VariosTDComponente extends React.Component {
+        class FilaComponente extends React.Component {
             render() {
-                return (
-                    <React.Fragment>
-                        <td>Una</td>
-                        <td>Dos</td>
-                        <td>Tres</td>
-                    </React.Fragment>
-                );
+                let etiq = "th";
+                if ( this.props.esCabecera ) {
+                    return (
+                        <React.Fragment>
+                            <th>{this.props.celda_1}</th>
+                            <th>{this.props.celda_2}</th>
+                            <th>{this.props.celda_3}</th>
+                        </React.Fragment>
+                    );
+                } else {
+                    return (
+                        <React.Fragment>
+                            <td>{this.props.celda_1}</td>
+                            <td>{this.props.celda_2}</td>
+                            <td>{this.props.celda_3}</td>
+                        </React.Fragment>
+                    );
+                }
             }
         }
         class TablaComponente extends React.Component {
+
+            objEstilo = {
+                backgroundColor: "#FFAAAA"
+            }
+
             render() {
+                
+
                 return (
                     <table>
-                        <tbody>
-                            <tr> 
-                                <VariosTDComponente></VariosTDComponente> 
+                        <thead>
+                            <tr className="fondo-azul">
+                                <FilaComponente 
+                                    esCabecera={true}
+                                    celda_1={this.props.tit_1}
+                                    celda_2={this.props.tit_2}
+                                    celda_3={this.props.tit_3}>
+                                </FilaComponente>
                             </tr>
-                            <tr> 
-                                <VariosTDComponente></VariosTDComponente> 
+                        </thead>
+                        <tbody>
+                            <tr style={ this.objEstilo }> 
+                                <FilaComponente celda_1="Uno"
+                                    celda_2="Dos" celda_3="Tres">
+                                </FilaComponente> 
+                            </tr>
+                            <tr style={ this.objEstilo }> 
+                                <FilaComponente celda_1="Cuatro"
+                                    celda_2="Cinco" celda_3="Seis">
+                                </FilaComponente> 
                             </tr>
                         </tbody>
                     </table>
@@ -49,7 +86,8 @@
         ReactDOM.render(
             <div>
                 <h1>Usando fragment en React</h1>
-                <TablaComponente></TablaComponente>
+                <TablaComponente tit_1="Titulo v2 1" tit_2="Titulo 2"
+                tit_3="Titulo 3"></TablaComponente>
             </div>, 
             document.getElementById("divContenedor"));
     </script>
