@@ -1,0 +1,22 @@
+Comandos construcción:
+
+Comenzando React:
+
+    npm install -g create-react-app
+
+    npm init react-app app-front-react
+	
+    cd app-front-react
+    npm start
+
+    npm install bootstrap
+
+    npm install react-router-dom
+
+Back-end:
+
+    mkdir app-back-mern
+    cd app-back-mern
+    npm install express body-parser cors mongoose
+
+    npm install -g nodemon
