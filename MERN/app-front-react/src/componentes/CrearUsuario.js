@@ -15,6 +15,7 @@ class CrearUsuario extends /*React.*/ Component{
         // cuando se invoque al método,
         // this   sea realmente   this, es decir, el objeto instanciado
         // basado en clase, en estaso, cada uno de los componentes
+        //TODO: Dejar limpios los campos
         this.state = {
             email: 'aaa@aaa.com',
             password: '1234',
