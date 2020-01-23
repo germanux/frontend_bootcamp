@@ -8,6 +8,9 @@ let Usuario = new Schema( {
     },
     password: {
         type: String
+    },
+    nombre: {
+        type: String
     }
 } );
 // Como el export default pero para Node ...

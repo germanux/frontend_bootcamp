@@ -17,21 +17,23 @@ class CrearUsuario extends /*React.*/ Component{
         // basado en clase, en estaso, cada uno de los componentes
         this.state = {
             email: 'aaa@aaa.com',
-            password: '1234'
+            password: '1234',
+            nombre: 'Mengano desde React'
         }
-        this.onChangeNombre = this.onChangeNombre.bind(this);
+        this.onChangeEmail = this.onChangeEmail.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
+        this.onChangeNombre = this.onChangeNombre.bind(this);
         this.onSubmit = this.onSubmit.bind(this);      
     }
     onSubmit(evt) {
         evt.preventDefault();
 
         // Invocaríamos al servicio cliente HTTP, Ajax, fetch...
-        console.log(`Datos: ${this.state.email} , ${this.state.password}`);
+        console.log(`Datos: ${this.state.email} , ${this.state.nombre}`);
     }
     // Método invocado por React cada vez que se cambia el valor del <INPUT>
     // Se envia un objeto con la información del evento
-    onChangeNombre(evt) {
+    onChangeEmail(evt) {
         this.setState( {
             email: evt.target.value
         } );
@@ -39,6 +41,11 @@ class CrearUsuario extends /*React.*/ Component{
     onChangePassword(evt) {
         this.setState( {
             password: evt.target.value
+        } );
+    }
+    onChangeNombre(evt) {
+        this.setState( {
+            nombre: evt.target.value
         } );
     }
     render() {
@@ -51,7 +58,7 @@ class CrearUsuario extends /*React.*/ Component{
                         <input type="email"
                                 placeholder="ejemplo@email.com"
                                 value = { this.state.email }
-                                onChange = { this.onChangeNombre }
+                                onChange = { this.onChangeEmail }
                                 />
                     </div>
                     <div>
@@ -60,6 +67,13 @@ class CrearUsuario extends /*React.*/ Component{
                                 placeholder="L3tr4as y numeros"
                                 onChange = { this.onChangePassword }
                                value={ this.state.password } />
+                    </div>
+                    <div>
+                        <label>Nombre: </label>
+                        <input type="text"
+                                placeholder="¿Quién carajo eres?"
+                                onChange = { this.onChangeNombre }
+                               value={ this.state.nombre } />
                     </div>
                     <div>
                         <input type="submit" value="Registrar"/>
