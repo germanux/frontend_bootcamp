@@ -1,7 +1,8 @@
 <div>
     <h2>{{ titulo }}</h2>
     <!--               [variableDelHijo] = "variableDelPadre"    -->
-    <app-editar-usuario [usuarioEditado] = "usuarioNuevo"></app-editar-usuario>
+    <app-editar-usuario [usuarioEditado] = "usuarioNuevo">
+	</app-editar-usuario>
 
     <input  type="button" value="Registrar" 
             (click)="registrarAlPulsarClick()" />

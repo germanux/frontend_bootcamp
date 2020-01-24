@@ -29,8 +29,20 @@ class CrearUsuario extends /*React.*/ Component{
     onSubmit(evt) {
         evt.preventDefault();
 
-        // Invocaríamos al servicio cliente HTTP, Ajax, fetch...
+        // Invocamos al servicio cliente HTTP, Ajax, fetch...
         console.log(`Datos: ${this.state.email} , ${this.state.nombre}`);
+        window.fetch('http://127.0.0.1:4000/api/usuarios/registro', {
+            method: 'post',
+            body: JSON.stringify({
+                "nombre": this.state.nombre,
+                "email": this.state.email,
+                "password": this.state.password
+            }), 
+            headers:{
+              'Content-Type': 'application/json'
+            }
+        }).then( (res) => alert("Pues habrá ido bien"))
+        .catch( (vacas) => "Pues habrá ido mal");
     }
     // Método invocado por React cada vez que se cambia el valor del <INPUT>
     // Se envia un objeto con la información del evento

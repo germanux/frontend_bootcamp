@@ -29,6 +29,14 @@ class ListarUsuarios extends /*React.*/ Component{
         if (this.state === null ) {
             objViDomJSX = (<p>Cargando...</p> );
         } else {
+            /*let contIds = 1;
+            let filasTr = this.state.listaUsuarios.map( (usu) => {
+                contIds++;
+                return ( <tr  key={ contIds }>
+                            <td>{ usu.nombre }</td>
+                            <td>{ usu.email }</td>
+                         </tr> );
+            } );*/
             objViDomJSX = (
                 <div>
                     <h2>Lista de usuarios</h2>
@@ -40,14 +48,14 @@ class ListarUsuarios extends /*React.*/ Component{
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>{ this.state.listaUsuarios[0].nombre }</td>
-                                <td>{ this.state.listaUsuarios[0].email }</td>
-                            </tr>
-                            <tr>
-                                <td>{ this.state.listaUsuarios[1].nombre }</td>
-                                <td>{ this.state.listaUsuarios[1].email }</td>
-                            </tr>
+                        {   this.state
+                                .listaUsuarios
+                                .map( usu =>  ( 
+                                          <tr  key={ usu._id }>
+                                            <td>{ usu.nombre }</td>
+                                            <td>{ usu.email }</td>
+                                          </tr> 
+                                ) ) }
                         </tbody>
                     </table>
                 </div>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="divDatos"></div>
+    <button id="btnPedirDatos">Petición GET HTTP</button>
+<script>
+    let divDatos= document.getElementById("divDatos");
+    let btnPedirDatos= document.getElementById("btnPedirDatos");
+    // Objeto AJAX: Asyncronous JavaScript And XML
+    let objAJAX = new XMLHttpRequest();
+
+    // Es lo mismo que   btnPedirDatos.addEventListener('click', function() {});
+    btnPedirDatos.onclick = function() {
+        objAJAX.send(); // Venga AJAX, lanza la petición de manera asíncrona
+                        // ...en otro hilo (subproceso) a tu rollo
+    }
+    // Cuando cambie el estado de la petición HTTP en el objeto AJAX
+    objAJAX.onreadystatechange = function() {
+        // AJAX tiene 4 estados, del 1 (abierto) al 4 (terminado)
+        // Estado puede HTTP: 200 (OK), 404 (Not found), 500 (Error del servidor)...
+        alert(`Estado de los datos: ${objAJAX.readyState}
+               Estado del HTTP: ${objAJAX.status}`);
+        if (objAJAX.readyState == 4) {
+            if (objAJAX.status == 200) {
+                divDatos.style.border = '5px solid green';
+                divDatos.innerHTML = objAJAX.responseText;
+                // Hemos consumido la API Rest Express guay
+
+                // Convertimos el JSON en obj JS y mapeamos
+                // la colección (array) extrayendo SÓLO los
+                // emails en mayúsculas, con PROGRAMACIÓN ESTRUCTURADA
+                let arrayUsu = JSON.parse(objAJAX.responseText);
+                let arrayMayus = new Array();
+                for ( usu of arrayUsu ) {
+                    arrayMayus.push(usu.email.toUpperCase());
+                }
+                alert("FOR " + JSON.stringify(arrayMayus));
+
+                // Vamos a hacer lo mismo con PROGRAMCIÓN FUNCIONAL
+                let arrayForEach = new Array();
+                arrayUsu.forEach( (usu) => {
+                    arrayForEach.push(usu.email.toUpperCase());
+                } );
+                alert("forEach " + JSON.stringify(arrayForEach));
+            
+                // Otra vez con PROMACIÓN FUNCIONAL PURA y SEGURA
+                let arrayMapeao = arrayUsu.map( (usu) => { 
+                    return usu.email; 
+                 } );
+                alert("forEach " + JSON.stringify(arrayMapeao));
+            
+            } else {
+                divDatos.style.border = '5px solid red';
+                divDatos.innerHTML = "La petición ha cascao";
+            }
+        }
+    }
+
+    objAJAX.open('GET', 'http://127.0.0.1:4000/api/usuarios/');
+    // objAJAX.open('GET', 'https://pokeapi.co/api/v2/pokemon/4');
+    
+</script>
+</body>
+</html>
