@@ -65,5 +65,36 @@ rutasAPI.route("/").get(function (reqPeticionHttp, resRespuestaHttp) {
         }
     } ); 
 });
+rutasAPI.route("/").delete(function (req, res) {
+    let id = req.body._id;
+});
+rutasAPI.route("/:identificador").delete(function (reqHttp, resHttp) {
+    let id = reqHttp.params.identificador;
+
+    let consultaFindOne = Usuario.findById( { _id: id } );
+    // Ejecutamos la consulta para saber si hay uno:
+    consultaFindOne.exec((err, resDoc) => {
+        if (err) {
+            resHttp.json( { "mensaje": "Error al buscar un usuario para eliminar, " + err});
+        } else {
+            if (resDoc == null) {
+                resHttp.json( { "mensaje": "No se ha encontrado el usuario" });
+            } else {    // Si no hay error y resDoc es distinto de null
+                console.log("Se ha encontrado, ahora eliminar: " + resDoc);
+                consultaFindOne.deleteOne().exec(
+                    (err, resDoc2) => {
+                            let msjResp = "";
+                            if (resDoc2.deletedCount >= 1) {              
+                                msjResp = "Usuario ELIMINADO";
+                            } else {                        
+                                msjResp = "Usuario NO eliminado " ;
+                            }
+                            console.log(resDoc2);
+                            resHttp.json( { "mensaje": msjResp });
+                    });
+            }
+        }
+    });
+})
 
 console.log(" 1.2) - El script principal ha terminado ");

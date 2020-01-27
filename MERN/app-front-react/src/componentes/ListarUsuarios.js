@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 
 class ListarUsuarios extends /*React.*/ Component{
 
+    constructor (props) {
+        super(props);
+        this.onClickEliminar = this.onClickEliminar.bind(this);
+    }
     // Equivalente al ngOnInit(): El componente ha sido montado
     componentDidMount() {
         this.setState(null);  // Aunque es redundante
@@ -22,21 +26,25 @@ class ListarUsuarios extends /*React.*/ Component{
     componentWillUnmount () { 
         // Esto se ejecuta cuando se desmonte el componente
     }
-
+    onClickEliminar(evt) {
+        let idUsu = evt.target.dataset.idUsuario;
+        let promesaHTTP = window.fetch(`http://127.0.0.1:4000/api/usuarios/${idUsu}`, {
+            method: "DELETE",
+            mode: 'cors'
+        } );
+        promesaHTTP.then((resHttp) => {
+            resHttp.json().then(( objMsj ) => {
+                alert(objMsj.mensaje);
+                this.componentDidMount();
+            })
+        })
+    }
     render() {
         let objViDomJSX;
         //TODO: Condicional, si this.state no existe, mostramos "Cargando..."
         if (this.state === null ) {
             objViDomJSX = (<p>Cargando...</p> );
         } else {
-            /*let contIds = 1;
-            let filasTr = this.state.listaUsuarios.map( (usu) => {
-                contIds++;
-                return ( <tr  key={ contIds }>
-                            <td>{ usu.nombre }</td>
-                            <td>{ usu.email }</td>
-                         </tr> );
-            } );*/
             objViDomJSX = (
                 <div>
                     <h2>Lista de usuarios</h2>
@@ -54,6 +62,9 @@ class ListarUsuarios extends /*React.*/ Component{
                                           <tr  key={ usu._id }>
                                             <td>{ usu.nombre }</td>
                                             <td>{ usu.email }</td>
+                                            <td><input value="Eliminar" type="button" 
+                                                data-id-usuario={ usu._id }
+                                                onClick = { this.onClickEliminar } /></td>
                                           </tr> 
                                 ) ) }
                         </tbody>
