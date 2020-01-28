@@ -1,6 +1,6 @@
 <h2>Lista de usuarios</h2>
 <!-- Directivas estructurales (*ngDirectiva):    *ngIf y *ngFor (parecido al foreach) -->
-<h3  *ngIf="laListaDeUsuarios.length == 0">
+<h3  *ngIf="this.srvUsu.getListaUsuarios().length == 0">
     La lista de usuarios está vacía
 </h3>
 
@@ -8,13 +8,13 @@
     <input type="text" placeholder="Nombre">
 </div>
 
-<div  *ngIf="laListaDeUsuarios.length != 0">
-    Cantidad de usuarios: {{ laListaDeUsuarios.length }}
+<div  *ngIf="this.srvUsu.getListaUsuarios().length != 0">
+    Cantidad de usuarios: {{ this.srvUsu.getListaUsuarios().length }}
     <br/>
     {{ "Variable posUsuElim = " + posUsuElim }}
     <table>
         <thead><th>Nombre</th><th>E-mail</th><th>Password</th><th>Acciones</th></thead>
-        <tr *ngFor="let usu of laListaDeUsuarios; let i = index">
+        <tr *ngFor="let usu of this.srvUsu.getListaUsuarios(); let i = index">
             <!-- Ahora este ngFor que parecía un foreach, 
                 ahora es un for(let i = 0; i<array.length; i++) -->
             <td>{{ usu.nombre}}</td>

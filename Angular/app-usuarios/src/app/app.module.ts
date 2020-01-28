@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 // Importamos la clase de aplicacion.component.ts
 import { AplicacionComponent } from './componentes/aplicacion.component';  
 import { CrearUsuarioComponent } from './componentes/crear-usuario/crear-usuario.component';
@@ -17,7 +18,7 @@ import { MenuComponent } from './componentes/menu/menu.component';
         EditarUsuarioComponent,
         MenuComponent
     ],
-    imports: [BrowserModule, FormsModule],   // Sólo se importan otros módulos
+    imports: [BrowserModule, FormsModule, HttpClientModule],   // Sólo se importan otros módulos
     bootstrap: [AplicacionComponent]
 })
 export class AppModule {
