@@ -51,7 +51,7 @@ function recibirRegistroPost(peticionHttp, respuestaHttp) {
     console.log(" 3) - La petición HTTP ha sido procesada");
 }
 
-rutasAPI.route("/registro").post(recibirRegistroPost);
+rutasAPI.route("/").post(recibirRegistroPost);
 
 rutasAPI.route("/").get(function (reqPeticionHttp, resRespuestaHttp) {
     // Pide tooooda la colección e invoca a esta callback con ella y el error
@@ -63,10 +63,7 @@ rutasAPI.route("/").get(function (reqPeticionHttp, resRespuestaHttp) {
             // Pedimos devolver la colleción en formato JSON 
             resRespuestaHttp.json(coleccionUsarios);
         }
-    } ); 
-});
-rutasAPI.route("/").delete(function (req, res) {
-    let id = req.body._id;
+    } );
 });
 rutasAPI.route("/:identificador").delete(function (reqHttp, resHttp) {
     let id = reqHttp.params.identificador;
@@ -96,5 +93,23 @@ rutasAPI.route("/:identificador").delete(function (reqHttp, resHttp) {
         }
     });
 })
+rutasAPI.route("/").put(function (reqHttp, resHttp) {
+    let id = reqHttp.body._id;
+
+    let consultaFindOne = Usuario.findById( { _id: id } );
+    consultaFindOne.exec((err, resMongo) => {
+        if (resMongo == null) {
+            console.log("No se ha encontrado usuario con id " + id);
+            resHttp.json( { "mensaje": "No se ha encontrado usuario con id " + id });
+        } else {
+            resMongo.nombre = reqHttp.body.nombre;
+            resMongo.email = reqHttp.body.email;
+            resMongo.password = reqHttp.body.password;
+            resMongo.save();
+            console.log("Modificando a " + resMongo);
+            resHttp.json( { "mensaje": "Se ha modificado correctamente " + resMongo });
+        }
+    })
+});
 
 console.log(" 1.2) - El script principal ha terminado ");
